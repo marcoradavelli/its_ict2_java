@@ -2,6 +2,8 @@ package org.jac.figure;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,15 +19,33 @@ public class GestoreFigure {
 		ordinaEStampa();
 	}
 	
+	public void stampaSuFile() throws Exception {
+		PrintWriter fout = new PrintWriter(new FileWriter("outputFigure.csv"));
+		for (Figura f : figure) {
+			if (f instanceof Quadrato) {
+				Quadrato q = (Quadrato)f;
+				fout.println("Quadrato;"+f.nome+";"+q.b);
+			} else {
+				
+			}
+		}
+		fout.close();
+	}
+	
 	public void popolaDaFile() throws Exception {
 		BufferedReader fin = new BufferedReader(new FileReader("figure.csv"));
 		String s = "";
 		while ( (s=fin.readLine()) != null) {
-			String a = s.split(";")[0]; 
+			String[] splitted = s.split(";");
+			String a = splitted[0]; 
 			if (a.equals("Quadrato")) {
-				figure.add(new Quadrato(s.split(";")[1], Double.parseDouble(s.split(";")[2])));
+				figure.add(new Quadrato(splitted[1], Double.parseDouble(splitted[2])));
 			} else if (a.equals("Rettangolo")) {
-				
+				figure.add(new Rettangolo(splitted[1], Double.parseDouble(splitted[2]), Double.parseDouble(splitted[3])));
+			} else if (a.equals("Tringolo")) {
+				figure.add(new Triangolo(splitted[1], Double.parseDouble(splitted[2]), Double.parseDouble(splitted[3]), Double.parseDouble(splitted[4])));
+			} else if (a.equals("Cerchio")) {
+				figure.add(new Cerchio(splitted[1], Double.parseDouble(splitted[2])));
 			}
 		} fin.close();
 	}

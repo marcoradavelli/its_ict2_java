@@ -17,16 +17,20 @@ public class GestoreFigure {
 			popolaDaFile();
 		} catch (Exception e) {e.printStackTrace();}
 		ordinaEStampa();
+		try {
+			stampaSuFile();
+		} catch (Exception e) {e.printStackTrace();}
 	}
 	
 	public void stampaSuFile() throws Exception {
 		PrintWriter fout = new PrintWriter(new FileWriter("outputFigure.csv"));
 		for (Figura f : figure) {
-			if (f instanceof Quadrato) {
+			if (f instanceof Cerchio) {
 				Quadrato q = (Quadrato)f;
 				fout.println("Quadrato;"+f.nome+";"+q.b);
-			} else {
-				
+			} else if(f instanceof Rettangolo){
+				Rettangolo r=(Rettangolo)f;
+				fout.println("Rettangolo;"+r.nome+";"+r.b+";"+r.h);
 			}
 		}
 		fout.close();

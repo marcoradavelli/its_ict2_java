@@ -8,12 +8,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class MainWindow extends JFrame implements KeyListener {
+public class MainWindowOld extends JFrame implements KeyListener {
 	
 	int x, y;
 	JPanel p;
 	
-	public MainWindow() {
+	public MainWindowOld() {
 		p = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
@@ -46,9 +46,9 @@ public class MainWindow extends JFrame implements KeyListener {
 		}.start();*/
 	}
 	
-	public static void main(String[] args) {
-		new MainWindow();
-	}
+	/*public static void main(String[] args) {
+		new MainWindowOld();
+	}*/
 
 	@Override
 	public void keyTyped(KeyEvent e) {

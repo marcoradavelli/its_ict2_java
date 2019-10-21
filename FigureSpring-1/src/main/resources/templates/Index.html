@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">    
+    <title>Indice</title>
+</head>
+<body>
+	<div class="jumbotron">
+		<h1 th:text="${intestazione}"></h1>
+		<p th:text="${saluti}"></p>
+	</div>
+	<ol>
+        <li th:each="fig : ${figure}" th:text="${fig.type}"></li>
+    </ol>
+</body>
+
+</html>
